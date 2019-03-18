@@ -1,0 +1,92 @@
+ext {
+//----------------------------------------  Architecture -------------------------------------------
+//****************************************  lifecycle   ********************************************
+
+    lifecycleXVer = "2.0.0"
+    lifecycleXPak = "androidx.lifecycle"
+    lifecycleX = [
+            extensions: buildDepend(lifecycleXPak, 'lifecycle-extensions', lifecycleXVer),
+            apt       : buildDepend(lifecycleXPak, 'lifecycle-compiler', lifecycleXVer),
+            //alternatively
+            runtime   : buildDepend(lifecycleXPak, 'lifecycle-runtime', lifecycleXVer),
+            livedata  : buildDepend(lifecycleXPak, 'lifecycle-livedata', lifecycleXVer),
+            viewmodel : buildDepend(lifecycleXPak, 'lifecycle-viewmodel', lifecycleXVer),
+            //optional
+            rx        : buildDepend(lifecycleXPak, 'lifecycle-reactivestreams', lifecycleXVer),
+            rx_ktx    : buildDepend(lifecycleXPak, 'lifecycle-reactivestreams-ktx', lifecycleXVer),
+            java8     : buildDepend(lifecycleXPak, 'lifecycle-common-java8', lifecycleXVer),
+            test      : buildDepend('android.arch.core', 'core-testing', lifecycleXVer)
+
+    ]
+//****************************************     Room    *********************************************
+
+    roomXVer = "2.1.0-alpha05"
+    roomXPak = "androidx.room"
+
+    roomX = [
+
+            runtime: buildDepend(roomXPak, 'room-runtime', roomXVer),
+            apt    : buildDepend(roomXPak, 'room-compiler', roomXVer),
+            //optional
+            rx     : buildDepend(roomXPak, 'room-rxjava2', roomXVer),
+            guava  : buildDepend(roomXPak, 'room-guava', roomXVer),
+
+            test   : buildDepend(roomXPak, 'room-testing', roomXVer)
+
+    ]
+//****************************************     Paging    *********************************************
+
+    pagingXVer = "2.1.0"
+    pagingXPak = "androidx.paging"
+    pagingX = [
+
+            runtime: buildDepend(pagingXPak, 'paging-runtime', pagingXVer),
+            //optional
+            rx     : buildDepend(pagingXPak, 'paging-rxjava2', pagingXVer),
+            // alternatively - without Android dependencies for testing
+            test   : buildDepend(pagingXPak, 'paging-common', pagingXVer)
+
+    ]
+//*************************************     Navigation    ******************************************
+    navigationXVer = "2.0.0"
+    navigationXPak = "androidx.navigation"
+    navigationX = [
+
+            fragment    : buildDepend(navigationXPak, 'navigation-fragment', navigationXVer),
+            fragment_ktx: buildDepend(navigationXPak, 'navigation-fragment-ktx', navigationXVer),
+            ui          : buildDepend(navigationXPak, 'navigation-ui', navigationXVer),
+            ui_ktx      : buildDepend(navigationXPak, 'navigation-ui-ktx', navigationXVer),
+            //optional
+            test        : buildDepend(navigationXPak, 'navigation-testing', navigationXVer),
+            test_ktx    : buildDepend(navigationXPak, 'navigation-testing-ktx', navigationXVer)
+
+    ]
+//****************************************     WorkManager    **************************************
+
+    workXVer = "2.0.0-rc01"
+    workXPak = "androidx.work"
+    workX = [
+
+            runtime : buildDepend(workXPak, 'work-runtime', workXVer),
+            //optional
+            firebase: buildDepend(workXPak, 'work-firebase', workXVer),
+
+            test    : buildDepend(workXPak, 'work-testing', workXVer)
+
+    ]
+
+//----------------------------------------  Foundation -------------------------------------------
+
+    supX = [
+
+            appcompat   : buildDepend('androidx.appcompat', 'appcompat', "1.0.2"),
+            design      : buildDepend("com.google.android.material", 'material', "1.1.0-alpha04"),
+            recyclerview: buildDepend("androidx.recyclerview", 'recyclerview', "1.0.0"),
+            constraint  : buildDepend("androidx.constraintlayout", 'constraintlayout', "2.0.0-alpha3")
+    ]
+}
+
+
+static String buildDepend(String pack, String dependency, String version) {
+    return "${pack}:${dependency}:${version}"
+}

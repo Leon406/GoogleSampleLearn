@@ -1,14 +1,13 @@
 ext {
 //--------------------------------------------  IDE ------------------------------------------------
-    kotlin_version = '1.3.11'
-//    buildToolsVer = '27.0.3'
+    kotlin_version = '1.3.21'
 //    minVer = 19
 //    targetVer = 27
 
     //---------------------------------------------Rx --------------------------------------------------
     reactivePackage = 'io.reactivex.rxjava2'
     //rx
-    rxAndroidVersion = '2.0.2'
+    rxAndroidVersion = '2.1.0'
     rxJavaVersion = '2.2.0'
     rxLifeCycleVersion = '2.2.1'
     rxBindVersion = '2.0.0'
@@ -30,13 +29,21 @@ ext {
 
     ]
 
+    daggerVer = "2.20"
+    dagger = [
+            runtime : "com.google.dagger:dagger:$daggerVer",
+            android : "com.google.dagger:dagger-android:$daggerVer",
+            support : "com.google.dagger:dagger-android-support:$daggerVer",
+            compiler: "com.google.dagger:dagger-compiler:$daggerVer",
+            apt     : "com.google.dagger:dagger-android-processor:$daggerVer"
+    ]
+
 //----------------------------------------  Architecture -------------------------------------------
 //****************************************  lifecycle   ********************************************
     lifecycleVer = "1.1.1"
-    lifecycleXVer = "2.0.0-alpha1"
 
     lifecyclePak = "android.arch.lifecycle"
-    lifecycleXPak = "androidx.lifecycle"
+
     lifecycle = [
             extensions   : buildDepend(lifecyclePak, 'extensions', lifecycleVer),
             apt          : buildDepend(lifecyclePak, 'compiler', lifecycleVer),
@@ -53,26 +60,11 @@ ext {
 
     ]
 
-    lifecycleX = [
-            extensions: buildDepend(lifecycleXPak, 'lifecycle-extensions', lifecycleXVer),
-            apt       : buildDepend(lifecycleXPak, 'lifecycle-compiler', lifecycleXVer),
-            //alternatively
-            runtime   : buildDepend(lifecycleXPak, 'lifecycle-runtime', lifecycleXVer),
-            livedata  : buildDepend(lifecycleXPak, 'lifecycle-livedata', lifecycleXVer),
-            viewmodel : buildDepend(lifecycleXPak, 'lifecycle-viewmodel', lifecycleXVer),
-            //optional
-            rx        : buildDepend(lifecycleXPak, 'lifecycle-reactivestreams', lifecycleXVer),
-            rx_ktx    : buildDepend(lifecycleXPak, 'lifecycle-reactivestreams-ktx', lifecycleXVer),
-            java8     : buildDepend(lifecycleXPak, 'lifecycle-common-java8', lifecycleXVer),
-            test      : buildDepend('android.arch.core', 'core-testing', lifecycleXVer)
-
-    ]
 //****************************************     Room    *********************************************
     roomVer = "1.1.1"
-    roomXVer = "2.1.0-alpha03"
 
     roomPak = "android.arch.persistence.room"
-    roomXPak = "androidx.room"
+
     room = [
             runtime: buildDepend(roomPak, 'runtime', roomVer),
             apt    : buildDepend(roomPak, 'compiler', roomVer),
@@ -84,47 +76,23 @@ ext {
 
     ]
 
-    roomX = [
-
-            runtime: buildDepend(roomXPak, 'room-runtime', roomXVer),
-            apt    : buildDepend(roomXPak, 'room-compiler', roomXVer),
-            //optional
-            rx     : buildDepend(roomXPak, 'room-rxjava2', roomXVer),
-            guava  : buildDepend(roomXPak, 'room-guava', roomXVer),
-
-            test   : buildDepend(roomXPak, 'room-testing', roomXVer)
-
-    ]
 //****************************************     Paging    *********************************************
     pagingVer = "1.0.1"
-    pagingXVer = "2.0.0-alpha1"
-
     pagingPak = "android.arch.paging"
-    pagingXPak = "androidx.paging"
     paging = [
             runtime: buildDepend(pagingPak, 'runtime', pagingVer),
-            ktx: buildDepend(pagingPak, 'paging-runtime-ktx', pagingVer),
+            ktx    : buildDepend(pagingPak, 'paging-runtime-ktx', pagingVer),
             //optional
             rx     : buildDepend(pagingPak, 'rxjava2', pagingVer),
             // alternatively - without Android dependencies for testing
             test   : buildDepend(pagingPak, 'common', pagingVer)
     ]
 
-    pagingX = [
-
-            runtime: buildDepend(pagingXPak, 'paging-runtime', pagingXVer),
-            //optional
-            rx     : buildDepend(pagingXPak, 'paging-rxjava2', pagingXVer),
-            // alternatively - without Android dependencies for testing
-            test   : buildDepend(pagingXPak, 'paging-common', pagingXVer)
-
-    ]
 //*************************************     Navigation    ******************************************
-    navigationVer = "1.0.0-alpha02"
-    navigationXVer = "2.0.0-alpha1"
+    navigationVer = "1.0.0"
+
 
     navigationPak = "android.arch.navigation"
-    navigationXPak = "androidx.arch.navigation"
 //For Safe args
     navigationClasspath = "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha02"
     navigationPlug = "androidx.navigation.safeargs"
@@ -139,40 +107,16 @@ ext {
             test_ktx    : buildDepend(navigationPak, 'navigation-testing-ktx', navigationVer)
     ]
 
-//    unreleased
-    navigationX = [
-
-            fragment    : buildDepend(navigationXPak, 'navigation-fragment', navigationXVer),
-            fragment_ktx: buildDepend(navigationXPak, 'navigation-fragment-ktx', navigationXVer),
-            ui          : buildDepend(navigationXPak, 'navigation-ui', navigationXVer),
-            ui_ktx      : buildDepend(navigationXPak, 'navigation-ui-ktx', navigationXVer),
-            //optional
-            test        : buildDepend(navigationXPak, 'navigation-testing', navigationXVer),
-            test_ktx    : buildDepend(navigationXPak, 'navigation-testing-ktx', navigationXVer)
-
-    ]
 //****************************************     WorkManager    **************************************
-    workVer = "1.0.0-alpha04"
-    workXVer = "1.0.0-alpha04"
+    workVer = "1.0.0"
 
     workPak = "android.arch.work"
-    workXPak = "androidx.arch.work"
     work = [
             runtime : buildDepend(workPak, 'work-runtime', workVer),
             //optional
             firebase: buildDepend(workPak, 'work-firebase', workVer),
 
             test    : buildDepend(workPak, 'work-testing', workVer)
-    ]
-
-    workX = [
-
-            runtime : buildDepend(workXPak, 'work-runtime', workXVer),
-            //optional
-            firebase: buildDepend(workXPak, 'work-firebase', workXVer),
-
-            test    : buildDepend(workXPak, 'work-testing', workXVer)
-
     ]
 
 //----------------------------------------  Foundation -------------------------------------------
@@ -182,27 +126,17 @@ ext {
 
     sup = [
 
-            compat        : buildDepend(supPak, 'support-compat', supVer),
-            //            v7
-            appcompat     : buildDepend(supPak, 'appcompat-v7', supVer),
-            cardview      : buildDepend(supPak, 'cardview-v7', supVer),
-            recyclerview  : buildDepend(supPak, 'recyclerview-v7', supVer),
-            palette       : buildDepend(supPak, 'palette-v7', supVer),
-            vectordrawable: buildDepend(supPak, 'support-vector-drawable', supVer),
-            annotation    : buildDepend(supPak, 'support-annotations', supVer),
-            customtabs    : buildDepend(supPak, 'customtabs', supVer),
-            exifinterface : buildDepend(supPak, 'exifinterface', supVer),
-            design        : buildDepend(supPak, 'design', supVer),
-            // optional  Provides a number of utility classes, such as AsyncTaskLoader and PermissionChecker.
-            utils         : buildDepend(supPak, 'support-core-utils', supVer),
-            // Implements a variety of UI-related components, such as ViewPager, NestedScrollView, and ExploreByTouchHelper.
-            ui            : buildDepend(supPak, 'support-core-ui', supVer),
-            //   Backports portions of the media framework, including MediaBrowser and MediaSession.
-            media         : buildDepend(supPak, 'support-media-compat', supVer),
-            //   has dependencies on compat, core-utils, core-ui, and media-compat.
-            fragment      : buildDepend(supPak, 'support-fragment', supVer),
+            compat       : buildDepend(supPak, 'support-compat', supVer),
 
-            multidex      : buildDepend(supPak, 'multidex', "1.0.0")
+            appcompat    : buildDepend(supPak, 'appcompat-v7', supVer),
+            design       : buildDepend(supPak, 'design', supVer),
+            cardview     : buildDepend(supPak, 'cardview-v7', supVer),
+            recyclerview : buildDepend(supPak, 'recyclerview-v7', supVer),
+            palette      : buildDepend(supPak, 'palette-v7', supVer),
+
+            customtabs   : buildDepend(supPak, 'customtabs', supVer),
+            exifinterface: buildDepend(supPak, 'exifinterface', supVer),
+            multidex     : buildDepend(supPak, 'multidex', "1.0.2")
 
     ]
 }
@@ -213,12 +147,12 @@ static String buildDepend(String pack, String dependency, String version) {
 }
 
 def addRepos(RepositoryHandler handler) {
-    handler.mavenLocal()
-    handler.maven { url 'http://maven.aliyun.com/nexus/content/repositories/central' }
-    handler.mavenCentral()
     handler.google()
     handler.jcenter()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    handler.mavenLocal()
+    handler.maven { url 'http://maven.aliyun.com/nexus/content/repositories/central' }
+    handler.mavenCentral()
     handler.maven { url 'https://www.jitpack.io' }
 //    private maven
     handler.maven { url 'http://127.0.0.1:8081/repository/maven-public/' }

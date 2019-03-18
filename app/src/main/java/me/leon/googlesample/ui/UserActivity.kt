@@ -19,6 +19,7 @@ package me.leon.googlesample.ui
 import android.arch.lifecycle.ViewModelProviders
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 
@@ -50,6 +51,7 @@ class UserActivity : AppCompatActivity() {
         update_user_button.setOnClickListener { updateUserName() }
         goMigrate.setOnClickListener { MainActivity.start(this) }
     }
+
 
     override fun onStart() {
         super.onStart()
