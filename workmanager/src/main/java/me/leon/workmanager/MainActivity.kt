@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.OneTimeWorkRequest
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import java.util.concurrent.TimeUnit
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 //        val continuation = WorkManager.getInstance()
 //            .beginWith(
 //
-//                OneTimeWorkRequest.Builder(MyWorker::class.java).addTag("my").build()
+                OneTimeWorkRequest.Builder(MyWorker::class.java).addTag("my").build()
 //            )
 //
 //        continuation.enqueue()

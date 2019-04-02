@@ -1,1 +1,1 @@
-include ':app', ':paging', ':dagger', ':workmanager'
+include ':app', ':paging', ':dagger', ':workmanager', ':navigation'
