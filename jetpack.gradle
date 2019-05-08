@@ -1,6 +1,6 @@
 ext {
 //--------------------------------------------  IDE ------------------------------------------------
-    kotlin_version = '1.3.21'
+    kotlin_version = '1.3.31'
 //    minVer = 19
 //    targetVer = 27
 
@@ -147,13 +147,13 @@ static String buildDepend(String pack, String dependency, String version) {
 }
 
 def addRepos(RepositoryHandler handler) {
+    handler.maven { url 'https://maven.aliyun.com/repository/public' }
+    handler.mavenCentral()
+    handler.maven { url 'https://www.jitpack.io' }
     handler.google()
     handler.jcenter()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     handler.mavenLocal()
-    handler.maven { url 'http://maven.aliyun.com/nexus/content/repositories/central' }
-    handler.mavenCentral()
-    handler.maven { url 'https://www.jitpack.io' }
 //    private maven
     handler.maven { url 'http://127.0.0.1:8081/repository/maven-public/' }
     handler.maven {
