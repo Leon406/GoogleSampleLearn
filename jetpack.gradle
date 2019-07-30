@@ -1,16 +1,14 @@
 ext {
 //--------------------------------------------  IDE ------------------------------------------------
-    kotlin_version = '1.3.31'
-//    minVer = 19
-//    targetVer = 27
+    kotlin_version = '1.3.41'
 
     //---------------------------------------------Rx --------------------------------------------------
     reactivePackage = 'io.reactivex.rxjava2'
     //rx
-    rxAndroidVersion = '2.1.0'
-    rxJavaVersion = '2.2.0'
+    rxAndroidVersion = '2.1.1'
+    rxJavaVersion = '2.2.10'
     rxLifeCycleVersion = '2.2.1'
-    rxBindVersion = '2.0.0'
+    rxBindVersion = '3.0.0'
     rxPermissionVersion = '0.9.4'
 
     rx = [
@@ -29,7 +27,7 @@ ext {
 
     ]
 
-    daggerVer = "2.20"
+    daggerVer = "2.24"
     dagger = [
             runtime : "com.google.dagger:dagger:$daggerVer",
             android : "com.google.dagger:dagger-android:$daggerVer",
